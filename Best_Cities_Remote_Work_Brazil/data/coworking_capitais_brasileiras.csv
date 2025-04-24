@@ -1,0 +1,28 @@
+﻿state,capital,total_coworking_spaces,minimum_price,maximum_price,avg_price
+Acre,Rio Branco,3,491,956,723.5
+Alagoas,Maceió,5,362,838,600.0
+Amapá,Macapá,11,372,717,544.5
+Amazonas,Manaus,15,329,1060,694.5
+Bahia,Salvador,35,517,1163,840.0
+Ceará,Fortaleza,29,520,1113,816.5
+Distrito Federal,Brasília,75,502,2153,1327.5
+Espírito Santo,Vitória,15,368,1055,711.5
+Goiás,Goiânia,33,483,1468,975.5
+Maranhão,São Luís,12,408,1046,727.0
+Mato Grosso,Cuiabá,9,457,825,641.0
+Mato Grosso do Sul,Campo Grande,10,337,1016,676.5
+Minas Gerais,Belo Horizonte,91,611,2225,1418.0
+Pará,Belém,15,375,837,606.0
+Paraíba,João Pessoa,3,428,1017,722.5
+Paraná,Curitiba,15,509,1258,883.5
+Pernambuco,Recife,18,478,959,718.5
+Piauí,Teresina,5,461,844,652.5
+Rio de Janeiro,Rio de Janeiro,53,582,2262,1422.0
+Rio Grande do Norte,Natal,15,465,894,679.5
+Rio Grande do Sul,Porto Alegre,16,463,958,710.5
+Rondônia,Porto Velho,11,364,1150,757.0
+Roraima,Boa Vista,5,487,1056,771.5
+Santa Catarina,Florianópolis,9,497,752,624.5
+São Paulo,São Paulo,59,663,1625,1144.0
+Sergipe,Aracaju,7,354,1185,769.5
+Tocantins,Palmas,7,329,875,602.0

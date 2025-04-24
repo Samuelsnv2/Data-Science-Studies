@@ -1,414 +1,372 @@
-# Brazil Remote Work Cities - Web Scraping Tool
-# This script collects data on various factors for analyzing the best cities for remote work in Brazil
+"""
+Coletor de Dados de Capitais Brasileiras - Versão Melhorada
+
+Este script coleta dados sobre as capitais brasileiras incluindo:
+- Custo de vida
+- Segurança
+- Qualidade de vida
+- Índices de transporte
+
+Com métodos aprimorados para extração de dados.
+"""
 
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
-import json
+import re
 import random
-from datetime import datetime
-import os
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.options import Options
-import time
+import json
+from urllib.parse import quote
 
-class BrazilRemoteWorkScraper:
+
+class BrazilCapitalsCollector:
     def __init__(self):
+        # Dicionário das capitais brasileiras (Estado: Capital)
+        self.capitals = {
+            "Acre": "Rio Branco",
+            "Alagoas": "Maceió",
+            "Amapá": "Macapá",
+            "Amazonas": "Manaus",
+            "Bahia": "Salvador",
+            "Ceará": "Fortaleza",
+            "Distrito Federal": "Brasília",
+            "Espírito Santo": "Vitória",
+            "Goiás": "Goiânia",
+            "Maranhão": "São Luís",
+            "Mato Grosso": "Cuiabá",
+            "Mato Grosso do Sul": "Campo Grande",
+            "Minas Gerais": "Belo Horizonte",
+            "Pará": "Belém",
+            "Paraíba": "João Pessoa",
+            "Paraná": "Curitiba",
+            "Pernambuco": "Recife",
+            "Piauí": "Teresina",
+            "Rio de Janeiro": "Rio de Janeiro",
+            "Rio Grande do Norte": "Natal",
+            "Rio Grande do Sul": "Porto Alegre",
+            "Rondônia": "Porto Velho",
+            "Roraima": "Boa Vista",
+            "Santa Catarina": "Florianópolis",
+            "São Paulo": "São Paulo",
+            "Sergipe": "Aracaju",
+            "Tocantins": "Palmas"
+        }
+        
+        # Lista para armazenar todos os dados
+        self.all_data = []
+        
+        # Cabeçalhos para simular um navegador real (mais detalhados)
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Cache-Control': 'max-age=0',
+            'Referer': 'https://www.google.com/'
         }
-        self.cities = self._load_cities()
-        self.results_dir = '../data'
-        os.makedirs(self.results_dir, exist_ok=True)
         
-    def _load_cities(self):
-        # Top Brazilian cities by population (could be expanded)
-        return [
-            'São Paulo', 'Rio de Janeiro', 'Brasília', 'Salvador', 
-            'Fortaleza', 'Belo Horizonte', 'Manaus', 'Curitiba', 
-            'Recife', 'Porto Alegre', 'Belém', 'Goiânia', 'Florianópolis',
-            'Natal', 'Vitória', 'Santos'
-        ]
+        # Sessão para manter cookies entre requisições
+        self.session = requests.Session()
     
-    def scrape_internet_quality(self):
-        print("Scraping internet quality data...")
-        chrome_driver_path = r"C:\Users\samue\OneDrive\Documents\chromedriver\chromedriver.exe"
-        service = Service(chrome_driver_path)
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        driver = webdriver.Chrome(service=service, options=chrome_options)
-
+    def format_city_for_url(self, city_name):
+        """Formata o nome da cidade para uso em URLs."""
+        formatted = city_name.replace(" ", "-")\
+                       .replace("ã", "a")\
+                       .replace("é", "e")\
+                       .replace("í", "i")\
+                       .replace("ó", "o")\
+                       .replace("ç", "c")\
+                       .replace("á", "a")\
+                       .replace("ê", "e")\
+                       .replace("ú", "u")
+        return formatted
+    
+    def extract_float_from_text(self, text):
+        """Extrai um valor float de um texto."""
+        if not text:
+            return None
+        # Remove caracteres não numéricos, exceto ponto decimal
+        cleaned_text = re.sub(r'[^\d.]', '', text.strip())
         try:
-            driver.get("https://www.speedtest.net/global-index")
-            # Wait for the table to load
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "index-table"))  # Adjust based on actual HTML
-            )
-
-            # Extract table rows
-            table = driver.find_element(By.CLASS_NAME, "index-table")  # Adjust based on actual HTML structure
-            rows = table.find_elements(By.TAG_NAME, "tr")[1:]  # Skip header row
-
-            internet_data = {}
-            for row in rows:
-                columns = row.find_elements(By.TAG_NAME, "td")
-                city = columns[0].text.strip()
-                if city in self.cities:
-                    internet_data[city] = {
-                        'avg_download_mbps': float(columns[1].text.strip()),
-                        'avg_upload_mbps': float(columns[2].text.strip()),
-                        'fiber_availability': round(random.uniform(0.3, 0.9), 2),  # Placeholder
-                        'isp_count': random.randint(3, 15)  # Placeholder
-                    }
-        except Exception as e:
-            print(f"Error scraping internet quality data: {e}")
-            return {}
-        finally:
-            driver.quit()
-
-        # Save data
-        self._save_data(internet_data, 'internet_quality.json')
-        return internet_data
+            if cleaned_text:
+                return float(cleaned_text)
+            return None
+        except ValueError:
+            return None
     
-    def scrape_cost_of_living(self):
-        print("Scraping cost of living data...")
-        cost_data = {}
-        base_url = "https://www.numbeo.com/cost-of-living/in/"
-
-        for city in self.cities:
-            url = f"{base_url}{city.replace(' ', '-')}"
-
-            response = requests.get(url, headers=self.headers)
-            soup = BeautifulSoup(response.content, 'html.parser')
-
-            try:
-                # Adjusted selectors to match Numbeo's structure
-                rent_1br_center = soup.find('td', string='Apartment (1 bedroom) in City Centre').find_next('td').text
-                utilities_monthly = soup.find('td', string='Basic (Electricity, Heating, Cooling, Water, Garbage) for 85m2 Apartment').find_next('td').text
-                internet_monthly = soup.find('td', string='Internet (60 Mbps or More, Unlimited Data, Cable/ADSL)').find_next('td').text
-                meal_inexpensive = soup.find('td', string='Meal, Inexpensive Restaurant').find_next('td').text
-                public_transport = soup.find('td', string='One-way Ticket (Local Transport)').find_next('td').text
-                cappuccino_price = soup.find('td', string='Cappuccino (regular)').find_next('td').text
-
-                # Convert values to float after cleaning
-                cost_data[city] = {
-                    'monthly_rent_1br_center': float(rent_1br_center.replace(',', '').strip()),
-                    'utilities_monthly': float(utilities_monthly.replace(',', '').strip()),
-                    'internet_monthly': float(internet_monthly.replace(',', '').strip()),
-                    'meal_inexpensive_restaurant': float(meal_inexpensive.replace(',', '').strip()),
-                    'monthly_public_transport': float(public_transport.replace(',', '').strip()),
-                    'cappuccino_price': float(cappuccino_price.replace(',', '').strip()),
-                    'cost_index': round(random.uniform(30, 70), 1)  # Placeholder
-                }
-            except Exception as e:
-                print(f"Error scraping {city}: {e}")
-                continue
-
-        # Save data
-        self._save_data(cost_data, 'cost_of_living.json')
-        return cost_data
-    
-    def scrape_safety_data(self):
-        print("Scraping safety data...")
-        safety_data = {}
-        base_url = "https://www.numbeo.com/crime/in/"
-
-        for city in self.cities:
-            url = f"{base_url}{city.replace(' ', '-')}"
-
-            response = requests.get(url, headers=self.headers)
-            soup = BeautifulSoup(response.content, 'html.parser')
-
-            try:
-                # Adjusted selectors to match Numbeo's structure
-                safety_index = soup.find('td', string='Safety Index:').find_next('td').text
-                crime_index = soup.find('td', string='Crime Index:').find_next('td').text
-
-                safety_data[city] = {
-                    'safety_index': float(safety_index.strip()),
-                    'crime_index': float(crime_index.strip()),
-                    'perceived_safety_day': round(random.uniform(40, 90), 1),  # Placeholder
-                    'perceived_safety_night': round(random.uniform(20, 70), 1)  # Placeholder
-                }
-            except Exception as e:
-                print(f"Error scraping {city}: {e}")
-                continue
-
-        # Save data
-        self._save_data(safety_data, 'safety_data.json')
-        return safety_data
-    
-    def scrape_climate_data(self):
-        print("Scraping climate data...")
-        climate_data = {}
-        api_key = "your_openweathermap_api_key_here"
-
-        for city in self.cities:
-            url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-            response = requests.get(url)
-            data = response.json()
-
-            try:
-                # Validate API response structure
-                if 'main' in data:
-                    temp = data['main']['temp']
-                    humidity = data['main']['humidity']
-                    climate_data[city] = {
-                        'avg_annual_temp': temp,
-                        'avg_annual_rainfall': random.randint(700, 2200),  # Placeholder
-                        'rainy_days_per_year': random.randint(80, 160),  # Placeholder
-                        'humidity_avg': humidity,
-                        'sunshine_hours_annual': random.randint(1500, 3000),  # Placeholder
-                        'comfort_index': round(random.uniform(40, 85), 1)  # Placeholder
-                    }
-                else:
-                    print(f"Error scraping {city}: Missing 'main' key in API response.")
-            except Exception as e:
-                print(f"Error scraping {city}: {e}")
-                continue
-
-        # Save data
-        self._save_data(climate_data, 'climate_data.json')
-        return climate_data
-    
-    def scrape_coworking_data(self):
-        print("Scraping coworking data...")
-        coworking_data = {}
-        api_key = "your_google_maps_api_key_here"
-
-        for city in self.cities:
-            url = f"https://maps.googleapis.com/maps/api/place/textsearch/json?query=coworking+in+{city}&key={api_key}"
-            response = requests.get(url)
-            data = response.json()
-
-            try:
-                spaces = []
-                for result in data['results'][:5]:  # Limit to 5 spaces
-                    spaces.append({
-                        'name': result['name'],
-                        'monthly_price': random.randint(300, 1200),  # Placeholder
-                        'rating': result.get('rating', None),
-                        'has_meeting_rooms': random.choice([True, False]),
-                        'has_high_speed_internet': random.choice([True, True, True, False]),
-                        'has_24_7_access': random.choice([True, False])
-                    })
-
-                coworking_data[city] = {
-                    'total_spaces': len(data['results']),
-                    'avg_monthly_price': random.randint(350, 1000),  # Placeholder
-                    'spaces_per_100k_pop': round(random.uniform(1, 10), 1),  # Placeholder
-                    'sample_spaces': spaces
-                }
-            except Exception as e:
-                print(f"Error scraping {city}: {e}")
-                continue
-
-        # Save data
-        self._save_data(coworking_data, 'coworking_data.json')
-        return coworking_data
-    
-    def scrape_transportation_data(self):
-        print("Scraping transportation data...")
-        transport_data = {}
-        base_url = "https://moovit.com/city/"  # Example URL
-
-        for city in self.cities:
-            url = f"{base_url}{city.replace(' ', '-')}"
-            response = requests.get(url, headers=self.headers)
-            soup = BeautifulSoup(response.content, 'html.parser')
-
-            try:
-                public_transit_score = float(soup.find('div', {'class': 'transit-score'}).text.strip())
-                walkability_score = float(soup.find('div', {'class': 'walkability-score'}).text.strip())
-                bike_friendly_score = float(soup.find('div', {'class': 'bike-score'}).text.strip())
-
-                transport_data[city] = {
-                    'has_metro': random.choice([True, False]),  # Placeholder
-                    'has_brt': random.choice([True, False]),  # Placeholder
-                    'public_transit_score': public_transit_score,
-                    'walkability_score': walkability_score,
-                    'bicycle_friendly_score': bike_friendly_score,
-                    'uber_availability': random.choice(['High', 'Medium', 'Low']),  # Placeholder
-                    'avg_commute_time': random.randint(25, 70),  # Placeholder
-                    'international_airport_distance': random.randint(0, 100)  # Placeholder
-                }
-            except Exception as e:
-                print(f"Error scraping {city}: {e}")
-                continue
-
-        # Save data
-        self._save_data(transport_data, 'transportation_data.json')
-        return transport_data
-    
-    def scrape_quality_of_life(self):
-        print("Scraping quality of life data...")
-        qol_data = {}
-        base_url = "https://www.numbeo.com/quality-of-life/in/"
-
-        for city in self.cities:
-            url = f"{base_url}{city.replace(' ', '-')}"
-            response = requests.get(url, headers=self.headers)
-            soup = BeautifulSoup(response.content, 'html.parser')
-
-            try:
-                hdi = float(soup.find('td', string='HDI').find_next('td').text.strip())
-                healthcare_quality = float(soup.find('td', string='Health Care').find_next('td').text.strip())
-                education_quality = float(soup.find('td', string='Education').find_next('td').text.strip())
-
-                qol_data[city] = {
-                    'hdi': hdi,
-                    'healthcare_quality': healthcare_quality,
-                    'education_quality': education_quality,
-                    'leisure_options_score': round(random.uniform(40, 95), 1),  # Placeholder
-                    'cultural_offerings_score': round(random.uniform(40, 95), 1),  # Placeholder
-                    'green_spaces_per_capita': round(random.uniform(5, 50), 1),  # Placeholder
-                    'pollution_index': round(random.uniform(20, 80), 1),  # Placeholder
-                    'overall_happiness_index': round(random.uniform(5, 9), 1)  # Placeholder
-                }
-            except Exception as e:
-                print(f"Error scraping {city}: {e}")
-                continue
-
-        # Save data
-        self._save_data(qol_data, 'quality_of_life.json')
-        return qol_data
-    
-    def _save_data(self, data, filename):
-        """Save data to JSON file with timestamp"""
-        filepath = os.path.join(self.results_dir, filename)
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump({
-                'data': data,
-                'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'source': 'Brazil Remote Work Cities Data Scraper'
-            }, f, ensure_ascii=False, indent=2)
-        print(f"Data saved to {filepath}")
-    
-    def compile_all_data(self):
-        """Compile all collected data into a single consolidated dataset"""
-        print("Compiling all data...")
+    def get_cost_of_living_data(self, city_name):
+        """Coleta dados de custo de vida para uma cidade."""
+        city_url = self.format_city_for_url(city_name)
+        url = f'https://www.numbeo.com/cost-of-living/in/{city_url}-Brazil'
         
-        # Load all individual data files
-        data_files = {
-            'internet': os.path.join(self.results_dir, 'internet_quality.json'),
-            'cost': os.path.join(self.results_dir, 'cost_of_living.json'),
-            'safety': os.path.join(self.results_dir, 'safety_data.json'),
-            'climate': os.path.join(self.results_dir, 'climate_data.json'),
-            'coworking': os.path.join(self.results_dir, 'coworking_data.json'),
-            'transport': os.path.join(self.results_dir, 'transportation_data.json'),
-            'quality': os.path.join(self.results_dir, 'quality_of_life.json')
+        try:
+            response = self.session.get(url, headers=self.headers, timeout=15)
+            if response.status_code != 200:
+                print(f"Erro ao acessar {url}: Status code {response.status_code}")
+                return None, None
+            
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Método 1: Buscar pelo índice na tabela
+            cost_index = None
+            rent_index = None
+            
+            # Procurar todas as tabelas
+            tables = soup.find_all('table')
+            for table in tables:
+                rows = table.find_all('tr')
+                for row in rows:
+                    row_text = row.text.strip()
+                    if "Cost of Living Index" in row_text:
+                        cells = row.find_all('td')
+                        if len(cells) >= 2:
+                            cost_index = self.extract_float_from_text(cells[1].text)
+                    elif "Rent Index" in row_text:
+                        cells = row.find_all('td')
+                        if len(cells) >= 2:
+                            rent_index = self.extract_float_from_text(cells[1].text)
+            
+            # Método 2: Se o método 1 falhar, buscar por texto
+            if cost_index is None:
+                cost_pattern = re.compile(r'Cost of Living Index.*?(\d+\.\d+)')
+                cost_match = cost_pattern.search(response.text)
+                if cost_match:
+                    cost_index = float(cost_match.group(1))
+            
+            if rent_index is None:
+                rent_pattern = re.compile(r'Rent Index.*?(\d+\.\d+)')
+                rent_match = rent_pattern.search(response.text)
+                if rent_match:
+                    rent_index = float(rent_match.group(1))
+            
+            return cost_index, rent_index
+            
+        except Exception as e:
+            print(f"Erro ao coletar dados de custo de vida para {city_name}: {e}")
+            return None, None
+    
+    def get_safety_data(self, city_name):
+        """Coleta dados de segurança para uma cidade."""
+        city_url = self.format_city_for_url(city_name)
+        url = f'https://www.numbeo.com/crime/in/{city_url}-Brazil'
+        
+        try:
+            response = self.session.get(url, headers=self.headers, timeout=15)
+            if response.status_code != 200:
+                print(f"Erro ao acessar {url}: Status code {response.status_code}")
+                return None
+            
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Método 1: Buscar pelo índice na tabela
+            safety_index = None
+            
+            # Procurar todas as tabelas
+            tables = soup.find_all('table')
+            for table in tables:
+                rows = table.find_all('tr')
+                for row in rows:
+                    row_text = row.text.strip()
+                    if "Safety Index" in row_text:
+                        cells = row.find_all('td')
+                        if len(cells) >= 2:
+                            safety_index = self.extract_float_from_text(cells[1].text)
+            
+            # Método 2: Se o método 1 falhar, buscar por texto
+            if safety_index is None:
+                safety_pattern = re.compile(r'Safety Index.*?(\d+\.\d+)')
+                safety_match = safety_pattern.search(response.text)
+                if safety_match:
+                    safety_index = float(safety_match.group(1))
+            
+            return safety_index
+            
+        except Exception as e:
+            print(f"Erro ao coletar dados de segurança para {city_name}: {e}")
+            return None
+    
+    def get_quality_of_life_data(self, city_name):
+        """Coleta dados de qualidade de vida para uma cidade."""
+        city_url = self.format_city_for_url(city_name)
+        url = f'https://www.numbeo.com/quality-of-life/in/{city_url}-Brazil'
+        
+        try:
+            response = self.session.get(url, headers=self.headers, timeout=15)
+            if response.status_code != 200:
+                print(f"Erro ao acessar {url}: Status code {response.status_code}")
+                return None, None
+            
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Método 1: Buscar pelos índices na tabela
+            qol_index = None
+            transport_index = None
+            
+            # Procurar todas as tabelas
+            tables = soup.find_all('table')
+            for table in tables:
+                rows = table.find_all('tr')
+                for row in rows:
+                    row_text = row.text.strip()
+                    if "Quality of Life Index" in row_text:
+                        cells = row.find_all('td')
+                        if len(cells) >= 2:
+                            qol_index = self.extract_float_from_text(cells[1].text)
+                    elif "Traffic Commute Time Index" in row_text:
+                        cells = row.find_all('td')
+                        if len(cells) >= 2:
+                            transport_index = self.extract_float_from_text(cells[1].text)
+            
+            # Método 2: Se o método 1 falhar, buscar por texto
+            if qol_index is None:
+                qol_pattern = re.compile(r'Quality of Life Index.*?(\d+\.\d+)')
+                qol_match = qol_pattern.search(response.text)
+                if qol_match:
+                    qol_index = float(qol_match.group(1))
+            
+            if transport_index is None:
+                transport_pattern = re.compile(r'Traffic Commute Time Index.*?(\d+\.\d+)')
+                transport_match = transport_pattern.search(response.text)
+                if transport_match:
+                    transport_index = float(transport_match.group(1))
+            
+            return qol_index, transport_index
+            
+        except Exception as e:
+            print(f"Erro ao coletar dados de qualidade de vida para {city_name}: {e}")
+            return None, None
+
+    def get_coworking_data(self, city_name):
+        """Tenta coletar dados aproximados de espaços de coworking via Google Places API."""
+        # Nota: Este método é apenas demonstrativo e requer uma chave API válida do Google
+        # Para uma implementação real, você precisaria de uma chave API do Google
+        
+        # Valores simulados baseados em estimativas
+        coworking_spaces = {
+            "São Paulo": {"count": 120, "avg_price": 800},
+            "Rio de Janeiro": {"count": 80, "avg_price": 750},
+            "Belo Horizonte": {"count": 45, "avg_price": 600},
+            "Brasília": {"count": 40, "avg_price": 700},
+            "Curitiba": {"count": 35, "avg_price": 550},
+            "Porto Alegre": {"count": 30, "avg_price": 580},
+            "Recife": {"count": 25, "avg_price": 500},
+            "Salvador": {"count": 22, "avg_price": 490},
+            "Fortaleza": {"count": 20, "avg_price": 450},
+            "Goiânia": {"count": 18, "avg_price": 420},
+            "Florianópolis": {"count": 15, "avg_price": 600},
+            "Vitória": {"count": 12, "avg_price": 480},
+            "Belém": {"count": 10, "avg_price": 400},
+            "Manaus": {"count": 10, "avg_price": 410},
+            "Natal": {"count": 8, "avg_price": 420},
+            "João Pessoa": {"count": 8, "avg_price": 380},
+            "Campo Grande": {"count": 7, "avg_price": 350},
+            "Maceió": {"count": 7, "avg_price": 370},
+            "Cuiabá": {"count": 6, "avg_price": 360},
+            "São Luís": {"count": 6, "avg_price": 340},
+            "Teresina": {"count": 5, "avg_price": 320},
+            "Aracaju": {"count": 5, "avg_price": 330},
+            "Porto Velho": {"count": 4, "avg_price": 300},
+            "Boa Vista": {"count": 3, "avg_price": 280},
+            "Macapá": {"count": 3, "avg_price": 270},
+            "Rio Branco": {"count": 3, "avg_price": 260},
+            "Palmas": {"count": 4, "avg_price": 290}
         }
         
-        all_data = {}
-        for category, filepath in data_files.items():
-            if os.path.exists(filepath):
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    loaded_data = json.load(f)
-                    all_data[category] = loaded_data['data']
-            else:
-                print(f"Warning: {filepath} not found.")
-        
-        # Create consolidated dataset
-        cities_data = []
-        for city in self.cities:
-            city_data = {'city': city}
-            
-            # Internet metrics
-            if 'internet' in all_data and city in all_data['internet']:
-                city_data['download_speed'] = all_data['internet'][city]['avg_download_mbps']
-                city_data['upload_speed'] = all_data['internet'][city]['avg_upload_mbps']
-                city_data['fiber_availability'] = all_data['internet'][city]['fiber_availability']
-            
-            # Cost metrics
-            if 'cost' in all_data and city in all_data['cost']:
-                city_data['rent_1br_center'] = all_data['cost'][city]['monthly_rent_1br_center']
-                city_data['cost_index'] = all_data['cost'][city]['cost_index']
-            
-            # Safety metrics
-            if 'safety' in all_data and city in all_data['safety']:
-                city_data['safety_index'] = all_data['safety'][city]['safety_index']
-                city_data['crime_index'] = all_data['safety'][city]['crime_index']
-            
-            # Climate metrics
-            if 'climate' in all_data and city in all_data['climate']:
-                city_data['avg_temp'] = all_data['climate'][city]['avg_annual_temp']
-                city_data['comfort_index'] = all_data['climate'][city]['comfort_index']
-            
-            # Coworking metrics
-            if 'coworking' in all_data and city in all_data['coworking']:
-                city_data['coworking_spaces'] = all_data['coworking'][city]['total_spaces']
-                city_data['avg_coworking_price'] = all_data['coworking'][city]['avg_monthly_price']
-            
-            # Transport metrics
-            if 'transport' in all_data and city in all_data['transport']:
-                city_data['public_transit_score'] = all_data['transport'][city]['public_transit_score']
-                city_data['walkability'] = all_data['transport'][city]['walkability_score']
-            
-            # Quality of life metrics
-            if 'quality' in all_data and city in all_data['quality']:
-                city_data['hdi'] = all_data['quality'][city]['hdi']
-                city_data['healthcare_score'] = all_data['quality'][city]['healthcare_quality']
-            
-            cities_data.append(city_data)
-        
-        # Create DataFrame and save as CSV
-        df = pd.DataFrame(cities_data)
-        csv_path = os.path.join(self.results_dir, 'brazil_remote_work_cities.csv')
-        df.to_csv(csv_path, index=False)
-        print(f"Consolidated data saved to {csv_path}")
-        
-        return df
+        # Retorna dados simulados para a cidade especificada ou dados padrão
+        if city_name in coworking_spaces:
+            return coworking_spaces[city_name]["count"], coworking_spaces[city_name]["avg_price"]
+        else:
+            # Valores padrão para cidades não listadas
+            return 5, 350
     
-    def run_all_scrapers(self):
-        """Run all scraping functions and compile data"""
-        print("Starting comprehensive data collection...")
-        
-        # Run all scrapers with delays to avoid overwhelming sources
-        self.scrape_internet_quality()
-        time.sleep(2)
-        
-        self.scrape_cost_of_living()
-        time.sleep(2)
-        
-        self.scrape_safety_data()
-        time.sleep(2)
-        
-        self.scrape_climate_data()
-        time.sleep(2)
-        
-        self.scrape_coworking_data()
-        time.sleep(2)
-        
-        self.scrape_transportation_data()
-        time.sleep(2)
-        
-        self.scrape_quality_of_life()
-        time.sleep(2)
-        
-        # Compile all data into a single dataset
-        final_data = self.compile_all_data()
-        
-        print("All data collection complete!")
-        return final_data
+    def collect_data(self):
+        """Coleta dados para todas as capitais."""
+        for state, capital in self.capitals.items():
+            print(f"Coletando dados para {capital}, {state}...")
+            
+            # Criar um dicionário para armazenar os dados desta cidade
+            city_data = {
+                'estado': state,
+                'capital': capital,
+                'indice_custo_de_vida': None,
+                'indice_aluguel': None,
+                'indice_seguranca': None,
+                'indice_qualidade_de_vida': None,
+                'indice_transporte': None,
+                'espacos_coworking': None,
+                'preco_medio_coworking': None
+            }
+            
+            # Coletar dados de custo de vida
+            cost_index, rent_index = self.get_cost_of_living_data(capital)
+            city_data['indice_custo_de_vida'] = cost_index
+            city_data['indice_aluguel'] = rent_index
+            
+            # Adicionar um atraso para evitar bloqueios
+            time.sleep(random.uniform(3, 5))
+            
+            # Coletar dados de segurança
+            safety_index = self.get_safety_data(capital)
+            city_data['indice_seguranca'] = safety_index
+            
+            # Adicionar um atraso para evitar bloqueios
+            time.sleep(random.uniform(3, 5))
+            
+            # Coletar dados de qualidade de vida
+            qol_index, transport_index = self.get_quality_of_life_data(capital)
+            city_data['indice_qualidade_de_vida'] = qol_index
+            city_data['indice_transporte'] = transport_index
+            
+            # Adicionar um atraso para evitar bloqueios
+            time.sleep(random.uniform(3, 5))
+            
+            # Coletar dados simulados de coworking (baseados em estimativas)
+            spaces_count, avg_price = self.get_coworking_data(capital)
+            city_data['espacos_coworking'] = spaces_count
+            city_data['preco_medio_coworking'] = avg_price
+            
+            # Adicionar os dados desta cidade à nossa coleção
+            self.all_data.append(city_data)
+            
+            print(f"Dados coletados para {capital}:")
+            print(f"  Custo de Vida: {cost_index}")
+            print(f"  Aluguel: {rent_index}")
+            print(f"  Segurança: {safety_index}")
+            print(f"  Qualidade de Vida: {qol_index}")
+            print(f"  Transporte: {transport_index}")
+            print(f"  Espaços Coworking: {spaces_count}")
+            print(f"  Preço Médio Coworking: R${avg_price}")
+    
+    def save_to_csv(self, filename='dados_capitais_brasileiras.csv'):
+        """Salva os dados coletados em um arquivo CSV."""
+        if self.all_data:
+            df = pd.DataFrame(self.all_data)
+            df.to_csv(filename, index=False, encoding='utf-8-sig')
+            print(f"Dados salvos em {filename} - {len(self.all_data)} registros.")
+        else:
+            print("Nenhum dado para salvar.")
+
+    def load_existing_data(self, filename='dados_capitais_brasileiras.csv'):
+        """Carrega dados de um CSV existente para complementar."""
+        try:
+            df = pd.read_csv(filename, encoding='utf-8-sig')
+            self.all_data = df.to_dict('records')
+            print(f"Carregados {len(self.all_data)} registros do arquivo {filename}.")
+            return True
+        except Exception as e:
+            print(f"Erro ao carregar arquivo: {e}")
+            return False
 
 
-# Usage example
+# Executar o coletor se o script for executado diretamente
 if __name__ == "__main__":
-    scraper = BrazilRemoteWorkScraper()
+    collector = BrazilCapitalsCollector()
     
-    # Run all scrapers or run individual ones as needed
-    # Example: only run internet and cost of living scrapers
-    # scraper.scrape_internet_quality()
-    # scraper.scrape_cost_of_living()
+    # Se quiser complementar dados existentes, descomente a linha abaixo
+    # collector.load_existing_data()
     
-    # Or run all scrapers
-    data = scraper.run_all_scrapers()
-    
-    # Display first few rows of final dataset
-    print("\nSample of collected data:")
-    print(data.head())
+    collector.collect_data()
+    collector.save_to_csv()
