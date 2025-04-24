@@ -1,0 +1,25 @@
+Nome: FORTALEZA
+Codigo Estacao: A305
+Latitude: -3.81583333
+Longitude: -38.53777777
+Altitude: 29.55
+Situacao: Pane
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;16;28.7;2.1;
+2024-02-29;22;27.9;1.6;
+2024-03-31;25;27.4;1.1;
+2024-04-30;12;null;null;
+2024-05-31;null;null;null;
+2024-06-30;null;null;null;
+2024-07-31;null;null;null;
+2024-08-31;null;null;null;
+2024-09-30;null;null;null;
+2024-10-31;null;null;null;
+2024-11-30;null;null;null;
+2024-12-31;null;null;null;
+2025-01-31;null;null;null;
+

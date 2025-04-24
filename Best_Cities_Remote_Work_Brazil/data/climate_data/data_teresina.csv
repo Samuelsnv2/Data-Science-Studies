@@ -1,0 +1,25 @@
+Nome: TERESINA
+Codigo Estacao: A312
+Latitude: -5.03472221
+Longitude: -42.80138888
+Altitude: 75.23
+Situacao: Pane
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;13;28.2;1;
+2024-02-29;19;27.3;1;
+2024-03-31;21;27.3;.9;
+2024-04-30;20;27.2;.9;
+2024-05-31;16;27.6;.9;
+2024-06-30;5;27;1;
+2024-07-31;2;null;null;
+2024-08-31;null;null;null;
+2024-09-30;null;null;null;
+2024-10-31;null;null;null;
+2024-11-30;null;null;null;
+2024-12-31;null;null;null;
+2025-01-31;null;null;null;
+

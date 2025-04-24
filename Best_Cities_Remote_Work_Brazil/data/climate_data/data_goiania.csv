@@ -1,0 +1,25 @@
+Nome: GOIANIA
+Codigo Estacao: A002
+Latitude: -16.64277777
+Longitude: -49.22027777
+Altitude: 727.3
+Situacao: Operante
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;19;25.1;.7;
+2024-02-29;21;24.7;.8;
+2024-03-31;23;25.1;.7;
+2024-04-30;13;25.3;.7;
+2024-05-31;1;23.2;.8;
+2024-06-30;0;22.1;.9;
+2024-07-31;0;21.7;.9;
+2024-08-31;0;23.3;1.3;
+2024-09-30;null;27.1;1.1;
+2024-10-31;21;25.9;.9;
+2024-11-30;25;24.2;.8;
+2024-12-31;25;24.6;.8;
+2025-01-31;22;24.6;.8;
+

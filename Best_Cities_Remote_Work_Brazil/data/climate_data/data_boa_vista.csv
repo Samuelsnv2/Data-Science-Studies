@@ -1,0 +1,25 @@
+Nome: BOA VISTA
+Codigo Estacao: A135
+Latitude: 2.81694443
+Longitude: -60.69083333
+Altitude: 82.35
+Situacao: Operante
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;4;29.5;2.9;
+2024-02-29;3;30.3;2.8;
+2024-03-31;3;30.9;2.6;
+2024-04-30;13;29.2;2.2;
+2024-05-31;5;null;null;
+2024-06-30;null;null;null;
+2024-07-31;null;null;null;
+2024-08-31;null;null;null;
+2024-09-30;5;29.3;1.6;
+2024-10-31;6;29.7;1.9;
+2024-11-30;10;29.5;1.9;
+2024-12-31;11;28.8;2.9;
+2025-01-31;9;28.3;3.1;
+

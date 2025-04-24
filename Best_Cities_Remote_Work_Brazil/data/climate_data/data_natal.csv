@@ -1,0 +1,25 @@
+Nome: NATAL
+Codigo Estacao: A304
+Latitude: -5.83722221
+Longitude: -35.20805555
+Altitude: 47.46
+Situacao: Operante
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;null;null;null;
+2024-02-29;null;null;null;
+2024-03-31;null;null;null;
+2024-04-30;null;null;null;
+2024-05-31;null;null;null;
+2024-06-30;null;null;null;
+2024-07-31;null;null;null;
+2024-08-31;5;null;null;
+2024-09-30;14;25.9;5;
+2024-10-31;8;26.7;4.3;
+2024-11-30;7;27.1;4.2;
+2024-12-31;16;27.6;4.1;
+2025-01-31;12;28;3.3;
+

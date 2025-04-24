@@ -1,0 +1,25 @@
+Nome: ARACAJU
+Codigo Estacao: A409
+Latitude: -10.9525
+Longitude: -37.05444444
+Altitude: 3.72
+Situacao: Operante
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;10;27.6;3;
+2024-02-29;17;28;2.2;
+2024-03-31;12;29;2.4;
+2024-04-30;24;28;1.6;
+2024-05-31;21;26.8;1.6;
+2024-06-30;23;25.7;1.7;
+2024-07-31;22;25.4;1.7;
+2024-08-31;16;25.5;1.9;
+2024-09-30;9;26.1;2.3;
+2024-10-31;6;26.5;3.3;
+2024-11-30;7;null;3.4;
+2024-12-31;6;null;3.6;
+2025-01-31;5;null;3;
+

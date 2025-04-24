@@ -1,0 +1,25 @@
+Nome: FLORIANOPOLIS
+Codigo Estacao: A806
+Latitude: -27.6025
+Longitude: -48.61999999
+Altitude: 4.87
+Situacao: Pane
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;24;24.6;.5;
+2024-02-29;6;26.9;.5;
+2024-03-31;4;null;null;
+2024-04-30;null;null;null;
+2024-05-31;null;null;null;
+2024-06-30;6;null;null;
+2024-07-31;15;16;1.2;
+2024-08-31;8;16.9;1.8;
+2024-09-30;14;20;2;
+2024-10-31;20;21.6;1.9;
+2024-11-30;20;22.9;1.9;
+2024-12-31;20;23.2;2.1;
+2025-01-31;11;24;null;
+

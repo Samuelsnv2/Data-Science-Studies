@@ -1,0 +1,25 @@
+Nome: RIO DE JANEIRO - FORTE DE COPACABANA
+Codigo Estacao: A652
+Latitude: -22.98833333
+Longitude: -43.19055555
+Altitude: 25.59
+Situacao: Operante
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;18;26;2.2;
+2024-02-29;8;27;2.2;
+2024-03-31;null;26;2.2;
+2024-04-30;null;null;1.8;
+2024-05-31;null;null;1.8;
+2024-06-30;null;null;null;
+2024-07-31;1;null;null;
+2024-08-31;2;22.3;2.5;
+2024-09-30;4;23.8;2.7;
+2024-10-31;11;22.8;2.6;
+2024-11-30;10;22.5;2.3;
+2024-12-31;17;24.5;2;
+2025-01-31;9;25.4;1.8;
+

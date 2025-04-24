@@ -1,0 +1,25 @@
+Nome: CUIABA
+Codigo Estacao: A901
+Latitude: -15.60694444
+Longitude: -56.06083333
+Altitude: 184
+Situacao: Operante
+Data Inicial: 2024-01-01
+Data Final: 2025-01-01
+Periodicidade da Medicao: Mensal
+
+Data Medicao;NUMERO DE DIAS COM PRECIP. PLUV, MENSAL (AUT)(número);TEMPERATURA MEDIA, MENSAL (AUT)(°C);VENTO, VELOCIDADE MEDIA MENSAL (AUT)(m/s);
+2024-01-31;4;null;1.9;
+2024-02-29;3;null;1.7;
+2024-03-31;11;28.2;1.5;
+2024-04-30;12;29;1.4;
+2024-05-31;5;26;1.5;
+2024-06-30;0;27.8;1.4;
+2024-07-31;0;24.7;1.2;
+2024-08-31;1;28.3;1.6;
+2024-09-30;2;32;1.6;
+2024-10-31;7;31.4;2;
+2024-11-30;11;28.8;2;
+2024-12-31;4;null;1.8;
+2025-01-31;6;null;1.7;
+
