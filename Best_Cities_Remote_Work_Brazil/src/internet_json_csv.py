@@ -7,10 +7,10 @@ with open('C:/Users/samue/OneDrive/Documents/Data-Science-Studies/Best_Cities_Re
 
 # List of state capitals in Brazil with their state codes
 capitals = {
-    'Rio Branco': 'AC', 'Maceió': 'AL', 'Macapá': 'AP', 'Manaus': 'AM', 'Salvador': 'BA', 'Fortaleza': 'CE',
-    'Brasília': 'DF', 'Vitória': 'ES', 'Goiânia': 'GO', 'São Luís': 'MA', 'Cuiabá': 'MT', 'Campo Grande': 'MS',
-    'Belo Horizonte': 'MG', 'Belém': 'PA', 'João Pessoa': 'PB', 'Curitiba': 'PR', 'Recife': 'PE', 'Teresina': 'PI',
-    'Rio de Janeiro': 'RJ', 'Natal': 'RN', 'Porto Alegre': 'RS', 'Porto Velho': 'RO', 'Boa Vista': 'RR',
+    'Rio Branco': 'AC', 'Maceio': 'AL', 'Macapa': 'AP', 'Manaus': 'AM', 'Salvador': 'BA', 'Fortaleza': 'CE',
+    'Brasília': 'DF', 'Vitoria': 'ES', 'Goiania': 'GO', 'São Luis': 'MA', 'Cuiaba': 'MT', 'Campo Grande': 'MS',
+    'Belo Horizonte': 'MG', 'Belem': 'PA', 'João Pessoa': 'PB', 'Curitiba': 'PR', 'Recife': 'PE', 'Teresina': 'PI',
+    'Rio De Janeiro': 'RJ', 'Natal': 'RN', 'Porto Alegre': 'RS', 'Porto Velho': 'RO', 'Boa Vista': 'RR',
     'Florianópolis': 'SC', 'São Paulo': 'SP', 'Aracaju': 'SE', 'Palmas': 'TO'
 }
 
