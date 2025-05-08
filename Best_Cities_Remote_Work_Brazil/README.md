@@ -148,7 +148,7 @@ The top five cities were further analyzed for their performance in the following
 To run the analysis, ensure you have the following Python libraries installed:
 
 ```bash
-pip install pandas scikit-learn matplotlib
+pip install requirements.txt
 ```
 
 ## 📌 Contributions
