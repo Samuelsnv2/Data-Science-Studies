@@ -82,6 +82,35 @@ Each city is normalized and scored using a Min-Max Scaler, and negative metrics 
 - A **Remote Work Score** was calculated for each city by summing up the weighted contributions of the individual metrics.
 
 ---
+### 📊 Justification for Weight Selection
+
+Each category was assigned a weight based on its overall importance to the quality of life and feasibility of working remotely in a city. The final Remote Work Score is calculated as a weighted sum of the following categories:
+
+- **Quality of Life (35%)**:  
+  This category includes essential factors for physical and mental well-being, such as healthcare, adequate housing, clean water, and sanitation. These are foundational to any long-term living situation.
+
+- **Cost of Living (20%)**:  
+  Daily expenses like rent, utilities, groceries, and transportation directly impact the financial sustainability of a remote worker. While important, it’s secondary to basic quality of life needs.
+
+- **Infrastructure (15%)**:  
+  Access to reliable internet and efficient public transport is crucial for remote workers but not as fundamental as health or safety.
+
+- **Safety (15%)**:  
+  Personal safety and low crime rates are vital for peace of mind and longevity. A safe environment is necessary for remote professionals to thrive.
+
+- **Climate (10%)**:  
+  Favorable weather conditions improve quality of life, though this factor may be less critical for individuals with different lifestyle preferences.
+
+- **Death Rate (5%)**:  
+  Serves as an indirect indicator of public health. However, since some aspects of public health are already covered under "Quality of Life," this metric is given a smaller weight.
+
+---
+
+### ✅ Final Score Calculation Formula
+
+The final Remote Work Score is computed using the formula below:
+
+---
 
 ## 🏆 Top 10 Cities for Remote Work in Brazil (2025)
 
