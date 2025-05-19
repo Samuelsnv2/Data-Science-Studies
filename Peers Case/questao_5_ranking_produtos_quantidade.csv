@@ -1,0 +1,11 @@
+ID PRODUTO,DATA NOTA,QTD ITEM,MES_ANO,NOME PRODUTO,CATEGORIA,POSICAO_RANKING
+1009,2023-03-28,3,2023-03,HD Externo 1TB,Eletrônicos,7
+1004,2023-03-22,2,2023-03,Cadeira Ergonômica,Móveis,4
+1001,2023-03-05,1,2023-03,Notebook EliteBook,Eletrônicos,1
+1002,2023-03-12,1,2023-03,Smartphone Galaxy S23,Eletrônicos,2
+1003,2023-03-18,1,2023-03,Mesa de Escritório,Móveis,3
+1005,2023-03-25,1,2023-03,"Monitor 24"" Full HD",Eletrônicos,5
+1006,2023-03-18,1,2023-03,Teclado Sem Fio,Eletrônicos,6
+1013,2023-03-12,1,2023-03,Armário de Aço,Móveis,8
+1003,2023-04-20,3,2023-04,Mesa de Escritório,Móveis,4
+1004,2023-04-07,2,2023-04,Cadeira Ergonômica,Móveis,5

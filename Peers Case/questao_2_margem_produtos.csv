@@ -1,0 +1,15 @@
+ID PRODUTO,MARGEM,NOME_PRODUTO,CATEGORIA
+1033,919.98,Livro: Python para Iniciantes,Livros
+1001,859.98,Notebook EliteBook,Eletrônicos
+1002,779.8,Smartphone Galaxy S23,Eletrônicos
+1012,419.8,Estante em Madeira,Móveis
+1013,379.8,Armário de Aço,Móveis
+1023,295.98,Serra Elétrica,Ferramentas
+1004,259.8,Cadeira Ergonômica,Móveis
+1039,239.98,"Tablet 10""",Eletrônicos
+1003,179.9,Mesa de Escritório,Móveis
+1005,169.98,"Monitor 24"" Full HD",Eletrônicos
+1011,79.98,Headphone Bluetooth,Eletrônicos
+1009,69.98,HD Externo 1TB,Eletrônicos
+1006,25.98,Teclado Sem Fio,Eletrônicos
+1036,3.98,Grampeador,Papelaria

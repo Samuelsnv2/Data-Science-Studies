@@ -1,0 +1,187 @@
+NOME CLIENTE,NOME PRODUTO,QTD ITEM
+Rafael Carvalho Santos,Mesa de Escritório,7
+Camila Duarte Vasconcelos,HD Externo 1TB,6
+Laura Mendes Sousa,HD Externo 1TB,6
+Roberto Andrade Pinheiro,Mesa de Escritório,6
+Thiago Nascimento Oliveira,HD Externo 1TB,6
+Lucas Gabriel Dias,Mesa de Escritório,6
+Gustavo Henrique Barros,HD Externo 1TB,6
+Larissa Moura Brito,HD Externo 1TB,6
+Isabela Freitas Monteiro,HD Externo 1TB,6
+Fernanda Beatriz Castro,Cadeira Ergonômica,5
+João Silva Almeida,Mesa de Escritório,4
+Marcos Antonio Nogueira,Cadeira Ergonômica,4
+Ricardo Fernandes Gomes,Mesa de Escritório,4
+André Luiz Rios,Mesa de Escritório,4
+Lucas Gabriel Dias,HD Externo 1TB,3
+Maria Oliveira Santos,Cadeira Ergonômica,3
+Larissa Moura Brito,Cadeira Ergonômica,3
+Maria Oliveira Santos,Mesa de Escritório,3
+Bruno Costa Teixeira,HD Externo 1TB,3
+Claudia Regina Moraes,HD Externo 1TB,3
+Ana Paula Costa Lima,HD Externo 1TB,3
+Vanessa Almeida Rocha,HD Externo 1TB,3
+Pedro Henrique Souza,HD Externo 1TB,3
+Ricardo Fernandes Gomes,HD Externo 1TB,3
+Patricia Cunha Melo,HD Externo 1TB,3
+Pedro Henrique Souza,Cadeira Ergonômica,3
+Rodrigo Pires Albuquerque,HD Externo 1TB,3
+Tatiane Ferreira Cardoso,HD Externo 1TB,3
+Silvia Helena Prado,"Tablet 10""",3
+Eduardo Sampaio Neto,HD Externo 1TB,3
+Rafael Carvalho Santos,HD Externo 1TB,3
+Felipe Augusto Dias,HD Externo 1TB,3
+Eduardo Sampaio Neto,Cadeira Ergonômica,3
+Isabela Freitas Monteiro,Mesa de Escritório,3
+Leonardo Martins Barbosa,"Monitor 24"" Full HD",2
+Juliana Martins Rodrigues,"Monitor 24"" Full HD",2
+Gustavo Henrique Barros,Cadeira Ergonômica,2
+Amanda Ribeiro Alves,Serra Elétrica,2
+Ana Paula Costa Lima,Cadeira Ergonômica,2
+Amanda Ribeiro Alves,Grampeador,2
+Amanda Ribeiro Alves,Mesa de Escritório,2
+Amanda Ribeiro Alves,Cadeira Ergonômica,2
+Beatriz Cunha Xavier,Teclado Sem Fio,2
+Carlos Eduardo Pereira,Cadeira Ergonômica,2
+Claudia Regina Moraes,Cadeira Ergonômica,2
+Daniela Soares Campos,Cadeira Ergonômica,2
+Claudia Regina Moraes,"Monitor 24"" Full HD",2
+Claudia Regina Moraes,Serra Elétrica,2
+Daniela Soares Campos,Serra Elétrica,2
+Carlos Eduardo Pereira,Estante em Madeira,2
+Bruno Costa Teixeira,Cadeira Ergonômica,2
+Beatriz Cunha Xavier,Livro: Python para Iniciantes,2
+Amanda Ribeiro Alves,"Monitor 24"" Full HD",2
+Bruno Costa Teixeira,"Tablet 10""",2
+Juliana Martins Rodrigues,Mesa de Escritório,2
+Renata Bastos Franco,Livro: Python para Iniciantes,2
+Renata Bastos Franco,Teclado Sem Fio,2
+Paulo Roberto Viana,"Tablet 10""",2
+Vanessa Almeida Rocha,"Monitor 24"" Full HD",2
+Viviane Castro Neves,"Tablet 10""",2
+Vanessa Almeida Rocha,Mesa de Escritório,2
+Vanessa Almeida Rocha,Grampeador,2
+Juliana Martins Rodrigues,Grampeador,2
+Lucas Gabriel Dias,Cadeira Ergonômica,2
+Leonardo Martins Barbosa,Grampeador,2
+Leonardo Martins Barbosa,Mesa de Escritório,2
+Diego Pereira Lima,Teclado Sem Fio,1
+Diego Pereira Lima,"Tablet 10""",1
+Diego Pereira Lima,Serra Elétrica,1
+Diego Pereira Lima,"Monitor 24"" Full HD",1
+Carlos Eduardo Pereira,Smartphone Galaxy S23,1
+Carlos Eduardo Pereira,Armário de Aço,1
+Claudia Regina Moraes,Grampeador,1
+Claudia Regina Moraes,Livro: Python para Iniciantes,1
+Beatriz Cunha Xavier,"Monitor 24"" Full HD",1
+Beatriz Cunha Xavier,"Tablet 10""",1
+Camila Duarte Vasconcelos,"Tablet 10""",1
+Alexandre Campos Dutra,Livro: Python para Iniciantes,1
+Ana Paula Costa Lima,"Monitor 24"" Full HD",1
+André Luiz Rios,Estante em Madeira,1
+Ana Paula Costa Lima,Grampeador,1
+Ana Paula Costa Lima,Mesa de Escritório,1
+André Luiz Rios,Livro: Python para Iniciantes,1
+André Luiz Rios,Grampeador,1
+André Luiz Rios,"Tablet 10""",1
+André Luiz Rios,"Monitor 24"" Full HD",1
+André Luiz Rios,Teclado Sem Fio,1
+Beatriz Cunha Xavier,Estante em Madeira,1
+Beatriz Cunha Xavier,Grampeador,1
+Beatriz Cunha Xavier,Mesa de Escritório,1
+Alexandre Campos Dutra,Cadeira Ergonômica,1
+Alexandre Campos Dutra,Teclado Sem Fio,1
+Alexandre Campos Dutra,Serra Elétrica,1
+Alexandre Campos Dutra,"Tablet 10""",1
+Diego Pereira Lima,Mesa de Escritório,1
+Diego Pereira Lima,Livro: Python para Iniciantes,1
+Diego Pereira Lima,Grampeador,1
+Diego Pereira Lima,Cadeira Ergonômica,1
+Daniela Soares Campos,"Tablet 10""",1
+Daniela Soares Campos,Notebook EliteBook,1
+Claudia Regina Moraes,Mesa de Escritório,1
+Claudia Regina Moraes,Teclado Sem Fio,1
+Hugo Leonardo Peixoto,Cadeira Ergonômica,1
+Gustavo Henrique Barros,Notebook EliteBook,1
+Hugo Leonardo Peixoto,Grampeador,1
+Felipe Augusto Dias,Mesa de Escritório,1
+João Silva Almeida,"Monitor 24"" Full HD",1
+João Silva Almeida,Grampeador,1
+João Silva Almeida,Cadeira Ergonômica,1
+Hugo Leonardo Peixoto,Serra Elétrica,1
+Hugo Leonardo Peixoto,Teclado Sem Fio,1
+Hugo Leonardo Peixoto,Livro: Python para Iniciantes,1
+Hugo Leonardo Peixoto,Mesa de Escritório,1
+Hugo Leonardo Peixoto,"Monitor 24"" Full HD",1
+Fernanda Beatriz Castro,Serra Elétrica,1
+Felipe Augusto Dias,Grampeador,1
+Felipe Augusto Dias,"Monitor 24"" Full HD",1
+Felipe Augusto Dias,Cadeira Ergonômica,1
+Eduardo Sampaio Neto,"Monitor 24"" Full HD",1
+Eduardo Sampaio Neto,Serra Elétrica,1
+Eduardo Sampaio Neto,Grampeador,1
+Eduardo Sampaio Neto,Mesa de Escritório,1
+Maria Oliveira Santos,Serra Elétrica,1
+Marcos Antonio Nogueira,"Monitor 24"" Full HD",1
+Marcos Antonio Nogueira,Grampeador,1
+Marcos Antonio Nogueira,Mesa de Escritório,1
+Marcos Antonio Nogueira,Estante em Madeira,1
+Leonardo Martins Barbosa,"Tablet 10""",1
+Leonardo Martins Barbosa,Smartphone Galaxy S23,1
+Juliana Martins Rodrigues,Cadeira Ergonômica,1
+Juliana Martins Rodrigues,Serra Elétrica,1
+João Silva Almeida,Serra Elétrica,1
+Larissa Moura Brito,"Tablet 10""",1
+Larissa Moura Brito,Serra Elétrica,1
+Laura Mendes Sousa,Cadeira Ergonômica,1
+Laura Mendes Sousa,Mesa de Escritório,1
+Laura Mendes Sousa,Serra Elétrica,1
+Laura Mendes Sousa,Teclado Sem Fio,1
+Juliana Martins Rodrigues,Estante em Madeira,1
+Felipe Augusto Dias,"Tablet 10""",1
+Felipe Augusto Dias,Smartphone Galaxy S23,1
+Felipe Augusto Dias,Serra Elétrica,1
+Paulo Roberto Viana,Estante em Madeira,1
+Patricia Cunha Melo,Grampeador,1
+Pedro Henrique Souza,Grampeador,1
+Patricia Cunha Melo,"Tablet 10""",1
+Pedro Henrique Souza,"Monitor 24"" Full HD",1
+Pedro Henrique Souza,Mesa de Escritório,1
+Patricia Cunha Melo,"Monitor 24"" Full HD",1
+Patricia Cunha Melo,Mesa de Escritório,1
+Mariana Torres Lemos,Teclado Sem Fio,1
+Mariana Torres Lemos,Estante em Madeira,1
+Mariana Torres Lemos,"Tablet 10""",1
+Mariana Torres Lemos,Livro: Python para Iniciantes,1
+Ricardo Fernandes Gomes,Serra Elétrica,1
+Ricardo Fernandes Gomes,"Monitor 24"" Full HD",1
+Ricardo Fernandes Gomes,Estante em Madeira,1
+Ricardo Fernandes Gomes,Grampeador,1
+Ricardo Fernandes Gomes,Cadeira Ergonômica,1
+Rafael Carvalho Santos,"Monitor 24"" Full HD",1
+Rafael Carvalho Santos,"Tablet 10""",1
+Renata Bastos Franco,Estante em Madeira,1
+Rafael Carvalho Santos,Grampeador,1
+Pedro Henrique Souza,Serra Elétrica,1
+Rodrigo Pires Albuquerque,"Tablet 10""",1
+Rodrigo Pires Albuquerque,Serra Elétrica,1
+Rodrigo Pires Albuquerque,Cadeira Ergonômica,1
+Rodrigo Pires Albuquerque,Livro: Python para Iniciantes,1
+Roberto Andrade Pinheiro,Teclado Sem Fio,1
+Roberto Andrade Pinheiro,Livro: Python para Iniciantes,1
+Thiago Nascimento Oliveira,Grampeador,1
+Tatiane Ferreira Cardoso,"Monitor 24"" Full HD",1
+Tatiane Ferreira Cardoso,Mesa de Escritório,1
+Tatiane Ferreira Cardoso,Grampeador,1
+Rodrigo Pires Albuquerque,Teclado Sem Fio,1
+Tatiane Ferreira Cardoso,Cadeira Ergonômica,1
+Vanessa Almeida Rocha,Cadeira Ergonômica,1
+Thiago Nascimento Oliveira,"Monitor 24"" Full HD",1
+Vanessa Almeida Rocha,Headphone Bluetooth,1
+Thiago Nascimento Oliveira,Mesa de Escritório,1
+Viviane Castro Neves,Cadeira Ergonômica,1
+Vanessa Almeida Rocha,Serra Elétrica,1
+Viviane Castro Neves,Estante em Madeira,1
+Viviane Castro Neves,Livro: Python para Iniciantes,1
+Viviane Castro Neves,Serra Elétrica,1
+Viviane Castro Neves,Teclado Sem Fio,1

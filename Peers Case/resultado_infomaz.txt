@@ -1,0 +1,184 @@
+Questão 1 - Valor Total de Venda por Categoria:
+
+  CATEGORIA  VALOR NOTA
+Eletrônicos    134250.6
+Ferramentas     44594.7
+     Livros     14687.4
+     Móveis    164825.6
+  Papelaria     42451.2
+
+
+Questão 2 - Margem de Lucro por Produto:
+
+ ID PRODUTO  VALOR ITEM  VALOR UNITARIO  MARGEM
+       1001      4299.9         3439.92  859.98
+       1002      3899.0         3119.20  779.80
+       1013      1899.0         1519.20  379.80
+       1006       129.9          103.92   25.98
+       1003       899.5          719.60  179.90
+       1004      1299.0         1039.20  259.80
+       1005       849.9          679.92  169.98
+       1009       349.9          279.92   69.98
+       1002      3899.0         3119.20  779.80
+       1004      1299.0         1039.20  259.80
+
+
+Questão 3 - Top 10 Clientes por Quantidade de Produtos Comprados por Mês:
+
+MES_ANO  POSICAO_RANKING            NOME CLIENTE  QTD ITEM
+2023-03                2 Ricardo Fernandes Gomes         3
+2023-03                1  Carlos Eduardo Pereira         2
+2023-03                3      Lucas Gabriel Dias         2
+2023-03                5      Laura Mendes Sousa         2
+2023-03                4 Gustavo Henrique Barros         1
+2023-03                6   Claudia Regina Moraes         1
+2023-04                1    Pedro Henrique Souza         3
+2023-04                2  Rafael Carvalho Santos         3
+2023-04                3    Bruno Costa Teixeira         2
+2023-04                8    Viviane Castro Neves         2
+
+
+Questão 4 - Top 10 Fornecedores por Quantidade de Estoque Disponível por Mês:
+
+MES_ANO  POSICAO_RANKING           NOME FORNECEDOR  QTD ESTOQUE
+2022-11                1  Ferramentas Gerais & Cia           50
+2022-12                1 Eletrônicos Nacional Ltda           50
+2022-12                2   Acessórios Digital Ltda           50
+2023-01                1  Móveis Premium Indústria           50
+2023-01                2       DecoraHome Comércio           50
+2023-01                3   EletroDom Distribuidora           50
+2023-02                1  Móveis Premium Indústria           50
+2023-02                2       DecoraHome Comércio           50
+2023-02                3   Livros Técnicos Editora           50
+2023-02                4          TecnoImport S.A.           40
+
+
+Questão 5 - Top 10 Produtos por Quantidade de Venda por Mês:
+
+MES_ANO  POSICAO_RANKING          NOME PRODUTO  QTD ITEM
+2023-03                7        HD Externo 1TB         3
+2023-03                4    Cadeira Ergonômica         2
+2023-03                1    Notebook EliteBook         1
+2023-03                2 Smartphone Galaxy S23         1
+2023-03                3    Mesa de Escritório         1
+2023-03                5   Monitor 24" Full HD         1
+2023-03                6       Teclado Sem Fio         1
+2023-03                8        Armário de Aço         1
+2023-04                3    Mesa de Escritório         4
+2023-04                4    Cadeira Ergonômica         2
+
+
+Questão 6 - Top 10 Produtos por Valor de Venda por Mês:
+
+MES_ANO  POSICAO_RANKING          NOME PRODUTO  TOTAL_VENDIDO
+2023-03                1    Notebook EliteBook         4299.9
+2023-03                2 Smartphone Galaxy S23         3899.0
+2023-03                8        Armário de Aço         1899.0
+2023-03                4    Cadeira Ergonômica         1299.0
+2023-03                3    Mesa de Escritório          899.5
+2023-03                5   Monitor 24" Full HD          849.9
+2023-03                7        HD Externo 1TB          349.9
+2023-03                6       Teclado Sem Fio          129.9
+2023-04                1    Notebook EliteBook         4299.9
+2023-04                2 Smartphone Galaxy S23         3899.0
+
+
+Questão 7 - Média de Valor de Venda por Categoria por Mês:
+
+  CATEGORIA MES_ANO  MEDIA_VALOR_ITEM
+Eletrônicos 2023-03       1905.720000
+Eletrônicos 2023-04       1796.416667
+Eletrônicos 2023-05       1574.675000
+Eletrônicos 2023-06        575.900000
+Eletrônicos 2023-07        621.566667
+Eletrônicos 2023-08        745.900000
+Eletrônicos 2023-09        621.566667
+Eletrônicos 2023-10        812.400000
+Eletrônicos 2023-11        575.900000
+Eletrônicos 2023-12        763.233333
+Eletrônicos 2024-01        575.900000
+Eletrônicos 2024-02        899.900000
+Eletrônicos 2024-03        621.566667
+Eletrônicos 2024-04        745.900000
+Eletrônicos 2024-05        621.566667
+Eletrônicos 2024-06        899.900000
+Eletrônicos 2024-07        621.566667
+Eletrônicos 2024-08        632.400000
+Ferramentas 2023-05        639.900000
+Ferramentas 2023-06        639.900000
+
+
+Questão 8 - Média de Margem de Lucro por Categoria por Mês:
+
+  CATEGORIA MES_ANO  MEDIA_MARGEM
+Eletrônicos 2023-03    381.144000
+Eletrônicos 2023-04    359.283333
+Eletrônicos 2023-05    314.935000
+Eletrônicos 2023-06    115.180000
+Eletrônicos 2023-07    124.313333
+Eletrônicos 2023-08    149.180000
+Eletrônicos 2023-09    124.313333
+Eletrônicos 2023-10    162.480000
+Eletrônicos 2023-11    115.180000
+Eletrônicos 2023-12    152.646667
+Eletrônicos 2024-01    115.180000
+Eletrônicos 2024-02    179.980000
+Eletrônicos 2024-03    124.313333
+Eletrônicos 2024-04    149.180000
+Eletrônicos 2024-05    124.313333
+Eletrônicos 2024-06    179.980000
+Eletrônicos 2024-07    124.313333
+Eletrônicos 2024-08    126.480000
+Ferramentas 2023-05    295.980000
+Ferramentas 2023-06    295.980000
+
+
+Questão 9 - Top 20 Produtos Mais Comprados por Clientes:
+
+              NOME CLIENTE       NOME PRODUTO  QTD ITEM
+    Rafael Carvalho Santos Mesa de Escritório         7
+ Camila Duarte Vasconcelos     HD Externo 1TB         6
+        Laura Mendes Sousa     HD Externo 1TB         6
+  Roberto Andrade Pinheiro Mesa de Escritório         6
+Thiago Nascimento Oliveira     HD Externo 1TB         6
+        Lucas Gabriel Dias Mesa de Escritório         6
+   Gustavo Henrique Barros     HD Externo 1TB         6
+       Larissa Moura Brito     HD Externo 1TB         6
+  Isabela Freitas Monteiro     HD Externo 1TB         6
+   Fernanda Beatriz Castro Cadeira Ergonômica         5
+        João Silva Almeida Mesa de Escritório         4
+   Marcos Antonio Nogueira Cadeira Ergonômica         4
+   Ricardo Fernandes Gomes Mesa de Escritório         4
+           André Luiz Rios Mesa de Escritório         4
+        Lucas Gabriel Dias     HD Externo 1TB         3
+     Maria Oliveira Santos Cadeira Ergonômica         3
+       Larissa Moura Brito Cadeira Ergonômica         3
+     Maria Oliveira Santos Mesa de Escritório         3
+      Bruno Costa Teixeira     HD Externo 1TB         3
+     Claudia Regina Moraes     HD Externo 1TB         3
+
+
+Questão 10 - Top 20 Produtos por Quantidade de Estoque:
+
+             NOME PRODUTO        CATEGORIA  TOTAL_ESTOQUE
+              Mouse Gamer      Eletrônicos            100
+          Teclado Sem Fio      Eletrônicos            100
+        Luminária de Mesa        Decoração            100
+          Adaptador USB-C       Acessórios             50
+       Cafeteira Elétrica Eletrodomésticos             50
+           Armário de Aço           Móveis             50
+       Cadeira Ergonômica           Móveis             50
+    Caderno Universitário        Papelaria             50
+      Carregador Portátil       Acessórios             50
+     Caneta Esferográfica        Papelaria             50
+   Calculadora Financeira        Papelaria             50
+       Estante em Madeira           Móveis             50
+               Grampeador        Papelaria             50
+           HD Externo 1TB      Eletrônicos             50
+   Fone de Ouvido com Fio       Acessórios             50
+          Ferro de Passar Eletrodomésticos             50
+Impressora Multifuncional      Eletrônicos             50
+           Jogo de Chaves      Ferramentas             50
+           Liquidificador Eletrodomésticos             50
+              Kit Pincéis      Ferramentas             50
+
